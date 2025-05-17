@@ -1,0 +1,49 @@
+:host {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/img/bg.png") no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+}
+
+:host app-stars-svg {
+  position: absolute;
+}
+
+:host app-stars-svg:first-child {
+  bottom: 60px;
+  left: 0px;
+}
+
+:host app-stars-svg:nth-child(2) {
+  top: 60px;
+  right: 0px;
+  transform: rotate(220deg);
+}
+
+section {
+  width: 550px;
+}
+
+h1, p {
+  font-family: 'Helvetica';
+  text-align: center;
+  color: #fff;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 20px;
+  opacity: 0.6;
+  margin-bottom: 55px;
+}
+

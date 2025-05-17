@@ -1,0 +1,12 @@
+<label class="container" [for]="id" (click)="onCheckboxChange()">
+  <span class="text-content">{{label}}</span>
+  <input 
+    #Checkbox
+    type="checkbox" 
+    [checked]="checked()"
+    [disabled]="disabled"
+    [name]="name" 
+    [id]="id"
+  > 
+  <span class="checkmark"></span>
+</label>

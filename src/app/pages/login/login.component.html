@@ -1,0 +1,32 @@
+<app-auth-template 
+  title="Welcome back, Trailblazer!" 
+  description="We are excited to have your back. Log in now and access your account.">
+  <form class="login-form" [formGroup]="loginForm">
+
+    <app-sliding-lable-input
+      formControlName="email"
+      label="Email"
+      type="email"
+      [error]="getErrorMessage('email')">
+    </app-sliding-lable-input>
+
+    <app-sliding-lable-input
+      formControlName="password"
+        label="Password"
+        type="password"
+        [error]="getErrorMessage('password')">
+    </app-sliding-lable-input>
+    <div class="last-row">
+      <app-check-box
+        formControlName="rememberMe"
+        id="remember-me"
+        name="remember-me"
+        label="Remember me" />
+      <span>Forgot your password?</span>
+    </div>
+
+    <app-submit-btn
+      text="Login"
+      type="submit" />
+  </form>
+</app-auth-template>

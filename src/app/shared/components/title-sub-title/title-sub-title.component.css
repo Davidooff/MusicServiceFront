@@ -1,0 +1,11 @@
+:host {
+  width: calc(100% - 20px);
+  padding-inline: 10px;
+  text-align: center;
+  display: inline-block;
+  color: white;
+}
+
+h2{
+  margin-block: 20px;
+}
