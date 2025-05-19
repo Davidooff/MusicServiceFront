@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthTemplateComponent } from '../../shared/components/auth-template/auth-template.component';
 import { SlidingLableInputComponent } from '../../shared/components/sliding-lable-input/sliding-lable-input.component';
@@ -30,6 +30,17 @@ export class LoginComponent {
     password: new FormControl('', passwordValidator()),
     rememberMe: new FormControl(false)
   });
+
+  displayErrors = signal(false);
+
+  onSubmit() {
+    if (this.loginForm.valid) {
+      console.log('Form Submitted!', this.loginForm.value);
+    } else {
+      this.displayErrors.set(true);
+      console.log('Form is invalid');
+    }
+  }
 
   getErrorMessage(controlName: string): string | null {
     const control = this.loginForm.get(controlName);

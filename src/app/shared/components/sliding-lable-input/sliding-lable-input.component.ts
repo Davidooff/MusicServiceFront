@@ -57,6 +57,7 @@ export class SlidingLableInputComponent implements ControlValueAccessor {
   @Input() scale: number = 4;
   @Input() textSize: number = 18;
   @Input() smallTextSize: number = 14;
+  @Input() displayErrors: boolean = false;
 
   @Input() set error(value: string | null) {
     this.vallidationError.set(value);
@@ -75,8 +76,6 @@ export class SlidingLableInputComponent implements ControlValueAccessor {
   labelPadding: number = 5;
   animationId: ReturnType<typeof setInterval> | null = null;
 
-  touched = false;
-
   // Lifecycle methods
   ngAfterViewInit(): void {
     this.initializeLabelMetrics();
@@ -89,9 +88,13 @@ export class SlidingLableInputComponent implements ControlValueAccessor {
     const canvas = this.canvasEl.nativeElement;
     const wrapper = this.wrapperEl.nativeElement;
 
-    canvas.width = wrapper.clientWidth * this.scale;
-    canvas.height = wrapper.clientHeight * this.scale;
-    this.drawBorder();
+    const newWidth = wrapper.clientWidth * this.scale;
+    const newHeight = wrapper.clientHeight * this.scale;
+    if (canvas.width !== newWidth || canvas.height !== newHeight) {
+      canvas.width = newWidth;
+      canvas.height = newHeight;
+      this.drawBorder();
+    }
   }
 
   onFocus() {
@@ -101,7 +104,6 @@ export class SlidingLableInputComponent implements ControlValueAccessor {
   }
 
   onBlur() {
-    this.touched = true;
     this.onTouched();
 
     if (this.value !== '') return;

@@ -6,8 +6,8 @@
     <canvas #Canvas ></canvas>
   </div>
   <label
-    [attr.for]="id"
     #Label
+    [attr.for]="id"
     [class.open]="isLabelOpen()"
     [ngStyle]="{
       fontSize: (isLabelOpen() ? smallTextSize : textSize) + 'px',
@@ -27,7 +27,7 @@
   <app-pass-eye *ngIf="type == 'password'" [isVisible]="isVisible()" (click)="toggleVisibility()"/>
 
   <div class="error-message" [ngStyle]="{
-    opacity: (vallidationError() && touched ? 1 : 0),
+    opacity: (vallidationError() && displayErrors? 1 : 0),
   }">
     {{ vallidationError() }}
   </div>

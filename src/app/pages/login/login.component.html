@@ -1,9 +1,10 @@
 <app-auth-template 
   title="Welcome back, Trailblazer!" 
   description="We are excited to have your back. Log in now and access your account.">
-  <form class="login-form" [formGroup]="loginForm">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
     <app-sliding-lable-input
+      [displayErrors]="displayErrors()"
       formControlName="email"
       label="Email"
       type="email"
@@ -11,6 +12,7 @@
     </app-sliding-lable-input>
 
     <app-sliding-lable-input
+      [displayErrors]="displayErrors()"
       formControlName="password"
         label="Password"
         type="password"
