@@ -1,13 +1,13 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthTemplateComponent } from '../../shared/components/auth-template/auth-template.component';
 import { SlidingLableInputComponent } from '../../shared/components/sliding-lable-input/sliding-lable-input.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import emailValidator from '../../core/validators/email-validator';
 import passwordValidator from '../../core/validators/password-validator';
-import { SubmitBtnComponent } from "../../shared/components/submit-btn/submit-btn.component";
-import { CheckBoxComponent } from "../../shared/components/check-box/check-box.component";
-
+import { SubmitBtnComponent } from '../../shared/components/submit-btn/submit-btn.component';
+import { CheckBoxComponent } from '../../shared/components/check-box/check-box.component';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,27 +18,33 @@ import { CheckBoxComponent } from "../../shared/components/check-box/check-box.c
     SlidingLableInputComponent,
     ReactiveFormsModule,
     SubmitBtnComponent,
-    CheckBoxComponent
-],
+    CheckBoxComponent,
+  ],
 
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  authService = inject(AuthService);
+  serverMsg = signal<{ title: string; detail: string } | null>(null);
+
   loginForm = new FormGroup({
-    email: new FormControl('asd', emailValidator()),
+    email: new FormControl('', emailValidator()),
     password: new FormControl('', passwordValidator()),
-    rememberMe: new FormControl(false)
+    rememberMe: new FormControl(false),
   });
 
   displayErrors = signal(false);
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Form Submitted!', this.loginForm.value);
+      this.authService.login(
+        this.loginForm.value.email!,
+        this.loginForm.value.password!,
+        this.serverMsg
+      );
     } else {
       this.displayErrors.set(true);
-      console.log('Form is invalid');
     }
   }
 

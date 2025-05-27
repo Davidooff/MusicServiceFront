@@ -2,8 +2,12 @@
 <app-stars-svg />
 <section>
   <div class="auth-template">
-    <h1>{{title}}</h1>
-    <p>{{description}}</p>
+    <h1>{{ title }}</h1>
+    <p class="description">{{ description }}</p>
+    <span *ngIf="error">
+      <p class="title">{{ error.title }}</p>
+      <p class="detail">{{ error.detail }}</p>
+    </span>
   </div>
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 </section>

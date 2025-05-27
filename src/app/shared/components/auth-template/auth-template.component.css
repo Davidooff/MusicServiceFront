@@ -29,8 +29,9 @@ section {
   width: 550px;
 }
 
-h1, p {
-  font-family: 'Helvetica';
+h1,
+p {
+  font-family: "Helvetica";
   text-align: center;
   color: #fff;
 }
@@ -41,9 +42,33 @@ h1 {
   font-weight: bold;
 }
 
-p {
+.description {
   font-size: 20px;
   opacity: 0.6;
-  margin-bottom: 55px;
+  margin-bottom: 10px;
 }
 
+.auth-template {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+span {
+  /* position: absolute; */
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  top: -5px;
+  width: 100%;
+}
+
+.title {
+  font-size: 14px;
+  color: #fd8888;
+}
+
+.detail {
+  font-size: 13px;
+  color: #fd8888;
+  margin-top: 10px;
+}

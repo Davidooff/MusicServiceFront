@@ -1,26 +1,17 @@
-:host{
+:host {
   width: 100%;
-  height:100%;
+  height: 100%;
   display: block;
   position: relative;
   color: white;
   font-family: "Helvetica";
 }
 
-/* form{
-  width: 30%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-} */
-
-app-sliding-lable-input{
+app-sliding-lable-input {
   margin-top: 10px;
 }
 
-.last-row{
+.last-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,6 +19,6 @@ app-sliding-lable-input{
   margin-bottom: 50px;
 }
 
-span{
+span {
   opacity: 0.6;
 }

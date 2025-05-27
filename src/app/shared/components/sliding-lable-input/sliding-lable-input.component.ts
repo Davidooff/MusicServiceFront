@@ -1,7 +1,20 @@
 import { NgIf, NgStyle } from '@angular/common';
-import { Component, ElementRef, forwardRef, HostListener, Input, NgZone, signal, ViewChild } from '@angular/core';
-import { PassEyeComponent } from "../pass-eye/pass-eye.component";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import {
+  Component,
+  ElementRef,
+  forwardRef,
+  HostListener,
+  Input,
+  NgZone,
+  signal,
+  ViewChild,
+} from '@angular/core';
+import { PassEyeComponent } from '../pass-eye/pass-eye.component';
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-sliding-lable-input',
@@ -11,21 +24,21 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@a
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => SlidingLableInputComponent),
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  styleUrl: './sliding-lable-input.component.css'
+  styleUrl: './sliding-lable-input.component.css',
 })
 export class SlidingLableInputComponent implements ControlValueAccessor {
   value: string = '';
 
   constructor(private ngZone: NgZone) {}
-  
+
   // State signals
   vallidationError = signal<null | string>(null);
   isVisible = signal(false);
   isLabelOpen = signal(false);
-  
+
   // Placeholders for the callbacks
   private onChange = (_: any) => {};
   private onTouched = () => {};
@@ -49,7 +62,7 @@ export class SlidingLableInputComponent implements ControlValueAccessor {
   }
 
   // Input properties
-  @Input({required: true}) formControlName!: string;
+  @Input({ required: true }) formControlName!: string;
   @Input() label: string = 'Test';
   @Input() type: string = 'text';
   @Input() id: string = '123';
@@ -107,14 +120,14 @@ export class SlidingLableInputComponent implements ControlValueAccessor {
     this.onTouched();
 
     if (this.value !== '') return;
-    
+
     this.clearAnimation();
     this.isLabelOpen.set(false);
     this.closeBorder(this.labelCenterX);
   }
 
   // UI state methods
-  toggleVisibility = () => this.isVisible.update(prev => !prev);
+  toggleVisibility = () => this.isVisible.update((prev) => !prev);
 
   // Canvas initialization and drawing methods
   private initializeCanvas() {
@@ -126,20 +139,24 @@ export class SlidingLableInputComponent implements ControlValueAccessor {
 
     const ctx = canvas.getContext('2d');
     if (!ctx) throw new Error('Failed to get 2D context');
-    
+
     this.ctx = ctx;
 
     if (this.value !== '') {
       this.isLabelOpen.set(true);
-      this.endOfAnimPopSize = (this.labelSize / 2 + this.labelPadding) * this.scale;
+      this.endOfAnimPopSize =
+        (this.labelSize / 2 + this.labelPadding) * this.scale;
     }
 
     this.drawBorder();
   }
 
   private initializeLabelMetrics() {
-    this.labelSize = this.labelEl.nativeElement.offsetWidth * this.smallTextSize / this.textSize;
-    this.labelCenterX = this.labelEl.nativeElement.offsetLeft + this.labelSize / 2;
+    this.labelSize =
+      (this.labelEl.nativeElement.offsetWidth * this.smallTextSize) /
+      this.textSize;
+    this.labelCenterX =
+      this.labelEl.nativeElement.offsetLeft + this.labelSize / 2;
   }
 
   drawBorder() {
@@ -148,17 +165,17 @@ export class SlidingLableInputComponent implements ControlValueAccessor {
     const bR = this.borderRadius * this.scale;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = "#ABABAB";
+    ctx.strokeStyle = '#ABABAB';
     ctx.lineWidth = 2 * this.scale;
 
-    // Draw corner arcs and lines 
+    // Draw corner arcs and lines
     ctx.arc(bR, bR, bR, Math.PI, Math.PI * 1.5);
     ctx.arc(canvas.width - bR, bR, bR, Math.PI * 1.5, Math.PI * 2);
     ctx.arc(canvas.width - bR, canvas.height - bR, bR, 0, Math.PI * 0.5);
     ctx.arc(bR, canvas.height - bR, bR, Math.PI * 0.5, Math.PI);
-    this.drawLine(0, canvas.height - bR, 0, 0 + bR);    
+    this.drawLine(0, canvas.height - bR, 0, 0 + bR);
     ctx.stroke();
-    
+
     // Clear the gap for the label
     ctx.clearRect(
       this.labelCenterX * this.scale - this.endOfAnimPopSize,
@@ -184,7 +201,7 @@ export class SlidingLableInputComponent implements ControlValueAccessor {
   popBorder(centerX: number, halfLength: number) {
     centerX = centerX * this.scale;
     halfLength = halfLength * this.scale;
-    
+
     let currentHalfGap = this.endOfAnimPopSize;
     this.ngZone.runOutsideAngular(() => {
       this.animationId = setInterval(() => {
@@ -213,11 +230,10 @@ export class SlidingLableInputComponent implements ControlValueAccessor {
           this.drawBorder();
           return;
         }
-        
+
         this.endOfAnimPopSize = halfLength;
         this.drawBorder();
       }, 15);
     });
   }
 }
-

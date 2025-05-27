@@ -1,0 +1,43 @@
+<app-auth-template
+  title="Register"
+  description="Ready to become part of the exclusive club? Fill in the details below, and let the journey begin!"
+  [error]="serverMsg()"
+>
+  <form class="register-form" [formGroup]="verifyForm" (ngSubmit)="onSubmit()">
+    <div class="inputs">
+      <app-code-input
+        #d1
+        formControlName="d1"
+        [error]="getError('d1')"
+        [nextInputToFocus]="d2"
+      />
+      <app-code-input
+        #d2
+        formControlName="d2"
+        [error]="getError('d2')"
+        [nextInputToFocus]="d3"
+      />
+      <app-code-input
+        #d3
+        formControlName="d3"
+        [error]="getError('d3')"
+        [nextInputToFocus]="d4"
+      />
+      <app-code-input
+        #d4
+        formControlName="d4"
+        [error]="getError('d4')"
+        [nextInputToFocus]="d5"
+      />
+      <app-code-input
+        #d5
+        formControlName="d5"
+        [error]="getError('d5')"
+        [nextInputToFocus]="d6"
+      />
+      <app-code-input #d6 formControlName="d6" [error]="getError('d6')" />
+    </div>
+
+    <app-submit-btn class="btn" text="Verify" type="submit" />
+  </form>
+</app-auth-template>

@@ -5,8 +5,9 @@ import { Component, Input } from '@angular/core';
   selector: 'app-pass-eye',
   imports: [NgIf],
   templateUrl: './pass-eye.component.html',
-  styleUrl: './pass-eye.component.css'
+  styleUrl: './pass-eye.component.css',
 })
 export class PassEyeComponent {
-  @Input({required: true}) isVisible!: boolean;
+  @Input({ required: true }) isVisible!: boolean;
+  rangdomMaskID = Math.random().toString(36).substring(2, 15);
 }

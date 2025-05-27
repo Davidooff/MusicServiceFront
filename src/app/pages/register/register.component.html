@@ -1,0 +1,45 @@
+<app-auth-template
+  title="Register"
+  description="Ready to become part of the exclusive club? Fill in the details below, and let the journey begin!"
+  [error]="serverMsg()"
+>
+  <form
+    class="register-form"
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <app-sliding-lable-input
+      [displayErrors]="displayErrors()"
+      formControlName="userename"
+      label="Userename"
+      type="text"
+      [error]="getErrorMessage('userename')"
+    />
+
+    <app-sliding-lable-input
+      [displayErrors]="displayErrors()"
+      formControlName="email"
+      label="Email"
+      type="email"
+      [error]="getErrorMessage('email')"
+    />
+
+    <app-sliding-lable-input
+      [displayErrors]="displayErrors()"
+      formControlName="password"
+      label="Password"
+      type="password"
+      [error]="getErrorMessage('password')"
+    />
+
+    <app-sliding-lable-input
+      [displayErrors]="displayErrors()"
+      formControlName="confirmPassword"
+      label="Confirm Password"
+      type="password"
+      [error]="getErrorMessage('confirmPassword')"
+    />
+
+    <app-submit-btn text="Register" type="submit" />
+  </form>
+</app-auth-template>

@@ -1,9 +1,11 @@
 <div class="wrapper" #Wrapper>
-  <div class="canvas-wrapper"
-  [ngStyle]="{
+  <div
+    class="canvas-wrapper"
+    [ngStyle]="{
       opacity: (isLabelOpen() ? 1 : 0.7),
-    }">
-    <canvas #Canvas ></canvas>
+    }"
+  >
+    <canvas #Canvas></canvas>
   </div>
   <label
     #Label
@@ -18,17 +20,27 @@
   </label>
   <input
     [attr.id]="id"
-    [attr.type]="type == 'password' ? (isVisible() ? 'text' : 'password') : type"
+    [attr.type]="
+      type == 'password' ? (isVisible() ? 'text' : 'password') : type
+    "
     (focus)="onFocus()"
     (blur)="onBlur()"
-    [value]="value" (input)="onInput($any($event.target).value)"
+    [value]="value"
+    (input)="onInput($any($event.target).value)"
   />
 
-  <app-pass-eye *ngIf="type == 'password'" [isVisible]="isVisible()" (click)="toggleVisibility()"/>
+  <app-pass-eye
+    *ngIf="type == 'password'"
+    [isVisible]="isVisible()"
+    (click)="toggleVisibility()"
+  />
 
-  <div class="error-message" [ngStyle]="{
+  <div
+    class="error-message"
+    [ngStyle]="{
     opacity: (vallidationError() && displayErrors? 1 : 0),
-  }">
+  }"
+  >
     {{ vallidationError() }}
   </div>
 </div>
