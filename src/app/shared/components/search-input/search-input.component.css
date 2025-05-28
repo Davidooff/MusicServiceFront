@@ -1,0 +1,39 @@
+:host {
+  position: relative;
+  height: 48px;
+  width: 420px;
+}
+
+.svg {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-48%);
+  fill: var(--unselected-text-color);
+}
+
+input {
+  width: calc(calc(100% - 57px) - 4px);
+  height: calc(100% - 4px);
+  padding-inline: 45px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--secondary-background-color);
+  color: var(--unselected-text-color);
+  font-family: "Inter";
+  font-size: 16px;
+  color: var(--white-text-color);
+}
+
+input::placeholder {
+  font-weight: 500;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* when input is not empty change fill */
+input:not(:placeholder-shown) ~ .svg {
+  fill: var(--white-text-color);
+}

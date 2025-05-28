@@ -79,4 +79,8 @@ export class AuthService {
       },
     });
   }
+
+  refreshToken() {
+    return this.http.patch('/api/auth/refresh-token', null);
+  }
 }

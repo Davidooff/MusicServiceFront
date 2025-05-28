@@ -1,0 +1,56 @@
+:host {
+  width: 230px;
+  padding-inline: 15px;
+  background-color: var(--background-color);
+}
+
+header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.side-bar-list {
+  color: var(--white-text-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.side-bar-list li {
+  display: flex;
+  border-radius: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  width: calc(100% - 24px);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.side-bar-list li.selected {
+  background-color: var(--secondary-background-color);
+}
+
+.side-bar-list li img {
+  margin-right: 12px;
+}
+
+footer {
+  margin-top: 8px;
+}
+
+.new-playlist {
+  padding-block: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  background: var(--secondary-background-color);
+  border: none;
+  border-radius: 24px;
+  color: var(--white-text-color);
+}
+
+.new-playlist img {
+  margin-right: 12px;
+}
