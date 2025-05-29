@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { StarsSvgComponent } from '../stars-svg/stars-svg.component';
 import { CommonModule } from '@angular/common';
+import { StarsSvgComponent } from '../stars-svg/stars-svg.component';
 
 @Component({
   selector: 'app-auth-template',

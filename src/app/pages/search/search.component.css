@@ -1,0 +1,7 @@
+:host {
+  background: var(--background-color);
+}
+
+app-song-item {
+  padding-block: 10px;
+}

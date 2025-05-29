@@ -1,10 +1,10 @@
 import { Component, forwardRef, inject, signal } from '@angular/core';
-import { AuthTemplateComponent } from '../../shared/components/auth-template/auth-template.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { CodeInputComponent } from '../../shared/components/code-input/code-input.component';
+import { CodeInputComponent } from '../../shared/components/auth/code-input/code-input.component';
 import codeValidator from '../../core/validators/code-validator';
-import { SubmitBtnComponent } from '../../shared/components/submit-btn/submit-btn.component';
+import { SubmitBtnComponent } from '../../shared/components/auth/submit-btn/submit-btn.component';
 import { AuthService } from '../../core/services/auth.service';
+import { AuthTemplateComponent } from '../../shared/components/auth/auth-template/auth-template.component';
 
 @Component({
   selector: 'app-verify-code',

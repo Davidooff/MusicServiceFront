@@ -1,0 +1,77 @@
+:host {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+:host:after {
+  transition: 0.1s;
+  content: "▶";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: #000;
+  width: 48px;
+  height: 48px;
+  opacity: 0;
+}
+
+:host:hover:after {
+  opacity: 0.8;
+}
+
+/* .like,
+.dislike,
+.more {
+  opacity: 0;
+}
+
+:host:hover .like,
+:host:hover .dislike,
+:host:hover .more {
+  opacity: 1;
+} */
+
+.track-img {
+  display: block;
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.track-data {
+  flex-direction: column;
+  align-items: start;
+  padding-inline: 8px;
+  width: 100%;
+  height: calc(100% - 6px);
+}
+
+.control-menu {
+  width: 90px;
+  height: 18px;
+}
+
+.like-dislike {
+  width: 51px;
+}
+
+.like {
+  transform: rotate(180deg);
+  margin-top: 3px;
+}
+
+.dislike {
+  margin-bottom: 3px;
+}

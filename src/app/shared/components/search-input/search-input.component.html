@@ -1,2 +1,9 @@
 <app-search-svg class="svg" />
-<input (input)="onInput($event)" placeholder="Search..." />
+<form (ngSubmit)="search($event)" class="search-form">
+  <input
+    [(ngModel)]="value"
+    name="search"
+    placeholder="Search..."
+    (input)="onInput($event)"
+  />
+</form>

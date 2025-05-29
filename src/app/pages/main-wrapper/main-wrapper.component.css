@@ -4,6 +4,29 @@
   display: flex;
 }
 
+app-side-bar {
+  width: 230px;
+}
+
 .right-side {
   width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+app-header {
+  position: fixed;
+  top: 0;
+  width: calc(100% - 325px);
+  right: 0;
+}
+
+.content {
+  margin-top: 98px;
+  width: calc(100% - 101px);
+  height: calc(100% - 50px);
+  background-color: var(--background-color);
+  overflow-y: scroll;
+  padding: 25px 50px 0 50px;
+  border-left: 1px solid var(--border-color);
 }

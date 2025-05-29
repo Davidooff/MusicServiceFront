@@ -1,12 +1,12 @@
 import { Component, inject, signal } from '@angular/core';
-import { AuthTemplateComponent } from '../../shared/components/auth-template/auth-template.component';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import emailValidator from '../../core/validators/email-validator';
 import passwordValidator from '../../core/validators/password-validator';
 import { CommonModule } from '@angular/common';
-import { SlidingLableInputComponent } from '../../shared/components/sliding-lable-input/sliding-lable-input.component';
-import { SubmitBtnComponent } from '../../shared/components/submit-btn/submit-btn.component';
+import { SlidingLableInputComponent } from '../../shared/components/auth/sliding-lable-input/sliding-lable-input.component';
+import { SubmitBtnComponent } from '../../shared/components/auth/submit-btn/submit-btn.component';
+import { AuthTemplateComponent } from '../../shared/components/auth/auth-template/auth-template.component';
 
 @Component({
   selector: 'app-register',

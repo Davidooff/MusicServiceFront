@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthTemplateComponent } from '../../shared/components/auth-template/auth-template.component';
+import { AuthTemplateComponent } from '../../shared/components/auth/auth-template/auth-template.component';
 
 @Component({
   selector: 'app-reset-password',

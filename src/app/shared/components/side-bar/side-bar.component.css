@@ -2,6 +2,7 @@
   width: 230px;
   padding-inline: 15px;
   background-color: var(--background-color);
+  height: 100%;
 }
 
 header {

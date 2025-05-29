@@ -1,13 +1,13 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthTemplateComponent } from '../../shared/components/auth-template/auth-template.component';
-import { SlidingLableInputComponent } from '../../shared/components/sliding-lable-input/sliding-lable-input.component';
+import { SlidingLableInputComponent } from '../../shared/components/auth/sliding-lable-input/sliding-lable-input.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import emailValidator from '../../core/validators/email-validator';
 import passwordValidator from '../../core/validators/password-validator';
-import { SubmitBtnComponent } from '../../shared/components/submit-btn/submit-btn.component';
-import { CheckBoxComponent } from '../../shared/components/check-box/check-box.component';
+import { SubmitBtnComponent } from '../../shared/components/auth/submit-btn/submit-btn.component';
+import { CheckBoxComponent } from '../../shared/components/auth/check-box/check-box.component';
 import { AuthService } from '../../core/services/auth.service';
+import { AuthTemplateComponent } from '../../shared/components/auth/auth-template/auth-template.component';
 
 @Component({
   selector: 'app-login',

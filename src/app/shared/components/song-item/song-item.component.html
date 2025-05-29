@@ -1,0 +1,14 @@
+<!-- <div class="left-part"> -->
+<img [src]="data.imgUrl" class="track-img" alt="" />
+<div class="track-data" (click)="onClick()">
+  <h2>{{ cutNames(data.name, 30) }}</h2>
+  <h3>{{ cutNames(getNames(data.artists), 30) }}</h3>
+</div>
+<!-- </div> -->
+<div class="control-menu">
+  <div class="like-dislike">
+    <img class="like" src="/assets/img/thumb_up.svg" alt="" />
+    <img class="dislike" src="/assets/img/thumb_up.svg" alt="" />
+  </div>
+  <img src="/assets/img/more_vert.svg" class="more" alt="" />
+</div>

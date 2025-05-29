@@ -1,0 +1,26 @@
+<div *ngIf="playerService.curentTrack()">
+  <div class="control">
+    <img src="/assets/img/skip_next.svg" class="prew" alt="" />
+    <!-- <div class="play state"> -->
+    <img
+      src="/assets/img/play_arrow.svg"
+      *ngIf="!playerService.isPlaying()"
+      alt=""
+    />
+    <img src="/assets/img/stop.svg" *ngIf="playerService.isPlaying()" alt="" />
+    <!-- </div> -->
+    <img src="/assets/img/skip_next.svg" class="skip" alt="" />
+    <div class="time">
+      {{ transformTime(playerService.curentTime()) }} <span> / </span>
+      {{ transformTime(playerService.curentTrack()!.duration) }}
+    </div>
+  </div>
+  <div class="track-wrapper">
+    <app-song-item [data]="playerService.curentTrack()!" />
+  </div>
+  <div>
+    <img src="/assets/img/repeat.svg" alt="" />
+    <img src="/assets/img/volume_up.svg" alt="" />
+    <img src="/assets/img/arrow_drop_down.svg" alt="" />
+  </div>
+</div>
