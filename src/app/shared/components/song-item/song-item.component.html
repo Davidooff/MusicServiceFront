@@ -1,5 +1,5 @@
 <!-- <div class="left-part"> -->
-<img [src]="data.imgUrl" class="track-img" alt="" />
+<img [src]="getImg(data.imgUrls, 160).url" class="track-img" alt="" />
 <div class="track-data" (click)="onClick()">
   <h2>{{ cutNames(data.name, 30) }}</h2>
   <h3>{{ cutNames(getNames(data.artists), 30) }}</h3>

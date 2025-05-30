@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { PlatformService } from '../../core/services/platform.service';
-import { TrackData } from '../../core/models/SearchResult';
+import { TrackData } from '../../core/models/TrackData';
 import { CommonModule } from '@angular/common';
 import { SongItemComponent } from '../../shared/components/song-item/song-item.component';
 import { ActivatedRoute } from '@angular/router';
@@ -17,14 +17,13 @@ export class SearchComponent {
   private readonly activatedRoute = inject(ActivatedRoute);
   // readonly searchResult$: Observable<TrackData[]> = new Observable();
   searchResultSignal = signal<TrackData[] | null>(null);
-
   constructor() {
     this.activatedRoute.params.subscribe((params) => {
       const searchResult$ = this.platform.search(params['query']);
 
       searchResult$.subscribe({
         next: (result) => {
-          this.searchResultSignal.set(result || null);
+          this.searchResultSignal.set(result);
         },
         error: (err) => {
           console.error('Search error:', err);

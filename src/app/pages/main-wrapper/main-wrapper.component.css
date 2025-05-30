@@ -5,7 +5,8 @@
 }
 
 app-side-bar {
-  width: 230px;
+  min-width: 230px;
+  max-width: 230px;
 }
 
 .right-side {

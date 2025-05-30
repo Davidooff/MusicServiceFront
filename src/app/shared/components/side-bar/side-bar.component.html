@@ -8,7 +8,10 @@
   </ul>
 </section>
 <footer>
-  <button class="new-playlist" (click)="playlistService.getPlaylists()">
+  <button
+    class="new-playlist"
+    (click)="playlistService.isCreateNewOpen.set(true)"
+  >
     <img src="assets/img/icon.svg" alt="Icon" /> New playlist
   </button>
 </footer>

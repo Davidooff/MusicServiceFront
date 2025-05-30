@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 @font-face {
   font-family: "Helvetica";
@@ -22,7 +22,6 @@
 }
 
 .main {
-  font-family: "Inter", sans-serif;
   color: var(--white-text-color);
 }
 
@@ -113,11 +112,12 @@ time,
 mark,
 audio,
 video {
+  font-family: "Roboto", sans-serif;
+
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */

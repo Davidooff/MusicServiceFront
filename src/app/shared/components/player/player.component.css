@@ -1,0 +1,57 @@
+:host {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.player {
+  color: white;
+  position: relative;
+  width: calc(100% - 48px);
+  height: 72px;
+  padding-inline: 24px;
+  background: var(--secondary-background-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+}
+
+.control img {
+  padding-inline: 4px;
+}
+
+.control img:first-child {
+  padding-left: 0;
+}
+
+.time {
+  padding-left: 4px;
+}
+
+.track-wrapper {
+  width: 500px;
+}
+
+.settings {
+  display: flex;
+}
+
+.time-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--border-color);
+}
+
+.curent-time {
+  height: 100%;
+  background-color: #ff0000;
+}

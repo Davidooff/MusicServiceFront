@@ -1,7 +1,8 @@
 import { Component, inject, Input } from '@angular/core';
-import { TrackData } from '../../../core/models/SearchResult';
+import { TrackData } from '../../../core/models/TrackData';
 import { IdNameGroup } from '../../../core/models/IdNameGroup';
 import { PlayerService } from '../../../core/services/player.service';
+import { getByResolution } from '../../../core/scripts/getByResolution';
 
 @Component({
   selector: 'app-song-item',
@@ -18,8 +19,12 @@ export class SongItemComponent {
   }
 
   getNames(el: IdNameGroup[]) {
+    console.log(this.data);
+
     return el.map((el) => el.name).join(' ');
   }
+
+  getImg = getByResolution;
 
   cutNames(str: string, len: number) {
     return str.slice(0, len) + (str.length > len ? '...' : '');

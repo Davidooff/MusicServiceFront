@@ -7,6 +7,7 @@
 }
 
 :host:after {
+  pointer-events: none;
   transition: 0.1s;
   content: "▶";
   display: flex;
@@ -56,10 +57,19 @@ div {
   padding-inline: 8px;
   width: 100%;
   height: calc(100% - 6px);
+  font-size: 16px;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+h3 {
 }
 
 .control-menu {
-  width: 90px;
+  min-width: 90px;
+  max-width: 90px;
   height: 18px;
 }
 

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { EPlatforms } from '../models/EPlatforms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TrackData } from '../models/SearchResult';
+import { TrackData } from '../models/TrackData';
 import { observeNotification } from 'rxjs/internal/Notification';
 
 @Injectable({
@@ -37,10 +37,5 @@ export class PlatformService {
       search: query,
       platform: this.curentPlatform,
     });
-  }
-
-  streamTrack(id: string, platform = this.curentPlatform) {
-    // return this.http.post<TrackData[]>('api/music/search', {}, {observe}
-    // return this.http.get(`api/music/${id}/stream/${platform}`,  {}, {observe});
   }
 }
