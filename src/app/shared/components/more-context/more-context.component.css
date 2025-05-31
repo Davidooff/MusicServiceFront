@@ -1,0 +1,23 @@
+.menu-wrapper {
+  background: var(--secondary-background-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+li {
+  color: white;
+  padding: 8px 5px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+li .img {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+  mask: url("/assets/img/skip_next.svg") center no-repeat;
+  background-color: var(--border-color);
+}

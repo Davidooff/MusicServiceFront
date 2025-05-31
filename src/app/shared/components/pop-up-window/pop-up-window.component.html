@@ -1,0 +1,28 @@
+<div
+  class="pop-up__wraper"
+  [class.open]="isOpen"
+  [ngStyle]="{
+    background: makeBgDark ? 'black' : 'none'
+  }"
+  (click)="panelClosed.emit()"
+></div>
+<div
+  *ngIf="isOpen"
+  [ngStyle]="
+    displayAsWindow
+      ? {
+          padding: '20px',
+          color: 'var(--white-text-color)',
+          borderRadius: '5px',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          translate: ' -50% -50%',
+          backgroundColor: 'var(--secondary-background-color)'
+        }
+      : { width: '0', height: '0' }
+  "
+  class="pop-up"
+>
+  <ng-content></ng-content>
+</div>

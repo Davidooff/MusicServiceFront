@@ -14,4 +14,7 @@
   >
     <img src="assets/img/icon.svg" alt="Icon" /> New playlist
   </button>
+  <div class="playlists-list" *ngIf="playlistService.userPlaylists()">
+    <app-show-playlists [userAlbums]="playlistService.userPlaylists()!" />
+  </div>
 </footer>

@@ -1,21 +1,19 @@
-<div
-  class="create-new-playlist__wraper"
-  [class.open]="playlists.isCreateNewOpen()"
-></div>
-<section class="create-new-playlist" *ngIf="playlists.isCreateNewOpen()">
-  <h2>Create new playlist</h2>
-  <app-default-input #NewPlaylistInput title="Title" />
-  <div class="buttons">
-    <app-default-btn
-      color="black"
-      title="Back"
-      (click)="playlists.isCreateNewOpen.set(false)"
-      class="back"
-    />
-    <app-default-btn
-      color="white"
-      title="Create"
-      (click)="playlists.create(playlistInput.value)"
-    />
-  </div>
-</section>
+<app-pop-up-window [isOpen]="playlists.isCreateNewOpen()">
+  <section class="create-new-playlist" *ngIf="playlists.isCreateNewOpen()">
+    <h2>Create new playlist</h2>
+    <app-default-input #NewPlaylistInput title="Title" />
+    <div class="buttons">
+      <app-default-btn
+        color="black"
+        title="Back"
+        (click)="playlists.isCreateNewOpen.set(false)"
+        class="back"
+      />
+      <app-default-btn
+        color="white"
+        title="Create"
+        (click)="playlists.create(playlistInput.value)"
+      />
+    </div>
+  </section>
+</app-pop-up-window>

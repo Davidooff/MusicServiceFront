@@ -1,0 +1,27 @@
+<div
+  class="playlist"
+  *ngFor="let el of userAlbums"
+  (click)="clickedOn.emit(el.id)"
+>
+  <div class="img" *ngIf="showImg">
+    <div class="img-placeholder" *ngIf="el.imgs.length == 0">
+      {{ el.name.slice(0, 1) }}
+    </div>
+    <img
+      class="full-image"
+      [src]="el.imgs[0]"
+      *ngIf="el.imgs.length >= 1 && el.imgs.length < 4"
+      alt=""
+    />
+    @if (el.imgs.length >= 4) {
+    <img class="part-image" [src]="el.imgs[0]" alt="" />
+    <img class="part-image" [src]="el.imgs[1]" alt="" />
+    <img class="part-image" [src]="el.imgs[2]" alt="" />
+    <img class="part-image" [src]="el.imgs[3]" alt="" />
+    }
+  </div>
+  <div>
+    <h3>{{ el.name }}</h3>
+    <h4>{{ el.owner.name }}</h4>
+  </div>
+</div>

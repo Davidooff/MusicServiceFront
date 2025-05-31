@@ -4,6 +4,8 @@ import { HeaderComponent } from '../../shared/components/header/header.component
 import { RouterOutlet } from '@angular/router';
 import { PlayerComponent } from '../../shared/components/player/player.component';
 import { CreatePlaylistPopUpComponent } from '../../shared/components/create-playlist-pop-up/create-playlist-pop-up.component';
+import { MoreContextComponent } from '../../shared/components/more-context/more-context.component';
+import { AddToPlaylistWindowComponent } from '../../shared/components/add-to-playlist-window/add-to-playlist-window.component';
 
 @Component({
   selector: 'app-main-wrapper',
@@ -13,6 +15,8 @@ import { CreatePlaylistPopUpComponent } from '../../shared/components/create-pla
     RouterOutlet,
     PlayerComponent,
     CreatePlaylistPopUpComponent,
+    MoreContextComponent,
+    AddToPlaylistWindowComponent,
   ],
   templateUrl: './main-wrapper.component.html',
   styleUrl: './main-wrapper.component.css',

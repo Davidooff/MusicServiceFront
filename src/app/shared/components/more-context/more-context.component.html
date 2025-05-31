@@ -1,0 +1,23 @@
+<app-pop-up-window
+  [isOpen]="moreContext.menu() !== null"
+  [displayAsWindow]="false"
+  [makeBgDark]="false"
+  (panelClosed)="close()"
+>
+  <div
+    class="menu-wrapper"
+    *ngIf="moreContext.showMenuOn() && position()"
+    [ngStyle]="{
+      transform:
+        'translate(' + position()![0] + 'px, ' + position()![1] + 'px)',
+      width: width + 'px'
+    }"
+  >
+    <ul class="menu-list">
+      <li *ngFor="let el of moreContext.menu()!.menu" (click)="el.func()">
+        <img [src]="el.img" class="menu-icon" alt="" />
+        <span>{{ el.title }}</span>
+      </li>
+    </ul>
+  </div>
+</app-pop-up-window>

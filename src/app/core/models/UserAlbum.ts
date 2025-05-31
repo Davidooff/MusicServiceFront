@@ -1,0 +1,10 @@
+import { IdNameGroup } from './IdNameGroup';
+import { TrackData } from './TrackData';
+
+export interface UserAlbum {
+  id: string | null;
+  name: string;
+  owner: IdNameGroup;
+  track: TrackData[];
+  timesOpened: number;
+}
