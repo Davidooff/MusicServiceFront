@@ -7,7 +7,6 @@ import { PlatformService } from '../../../core/services/platform.service';
 
 @Component({
   selector: 'app-search-input',
-  standalone: true,
   imports: [SearchSvgComponent, FormsModule],
   templateUrl: './search-input.component.html',
   styleUrl: './search-input.component.css',

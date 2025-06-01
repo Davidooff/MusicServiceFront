@@ -1,0 +1,28 @@
+<div
+  class="wrapper"
+  *ngIf="player.curentTrack()"
+  [ngStyle]="
+    player.isQueueShow()
+      ? {
+          translate: '0 0'
+        }
+      : { translate: '0 100vh' }
+  "
+>
+  <div class="left-side">
+    <app-joind-image
+      [images]="player.curentTrack()!.imgUrls"
+      [resolution]="1000000"
+    />
+  </div>
+  <div class="right-side">
+    <div class="passedQueu">
+      <h3>Passed queue</h3>
+      <app-song-item *ngFor="let track of player.passedQueu()" [data]="track" />
+    </div>
+    <div class="queu">
+      <h3>Play next</h3>
+      <app-song-item *ngFor="let track of player.queu()" [data]="track" />
+    </div>
+  </div>
+</div>

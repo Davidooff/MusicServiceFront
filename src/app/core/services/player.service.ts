@@ -15,6 +15,11 @@ export class PlayerService {
   isRepeatEnabled = signal<boolean>(false);
   isLoading = signal<boolean>(false);
   audio = new Audio();
+  isQueueShow = signal(false);
+
+  switchQueueShow() {
+    this.isQueueShow.update((el) => !el);
+  }
 
   constructor() {
     this.setupAudioEvents();
@@ -55,12 +60,62 @@ export class PlayerService {
     });
   }
 
+  private setAudio(id: string, ePlatform: EPlatforms, startPlay: boolean) {
+    this.audio.src = `/api/music/${ePlatform}/stream/${id}`;
+    startPlay && this.audio.play();
+  }
+
+  playNext(start: boolean) {
+    let nexEl: TrackData | undefined;
+    this.queu.update((next) => {
+      nexEl = next.shift();
+      return [...next];
+    });
+    if (nexEl) {
+      this.isPlaying.set(start);
+      this.curentTrack.set(nexEl);
+      this.passedQueu.update((queu) => [...queu, nexEl as TrackData]);
+      this.setAudio(nexEl.id, nexEl.ePlatform, start);
+    }
+  }
+
+  goPre() {
+    if (this.curentTime() > 5) this.audio.currentTime = 0;
+    else {
+      let lastPlayed: TrackData[] | undefined;
+      this.passedQueu.update((el) => {
+        if (el.length === 0) {
+          this.audio.currentTime = 0;
+          return el;
+        }
+        lastPlayed = el.slice(-2);
+        return el.slice(0, -2);
+      });
+      if (lastPlayed) {
+        this.queu.update((el) => [...(lastPlayed as TrackData[]), ...el]);
+        this.playNext(this.isPlaying());
+      }
+    }
+  }
+
   play(track: TrackData) {
-    this.curentTrack.set(track);
-    this.isPlaying.set(true);
-    this.passedQueu.update((el) => [...el, track]);
-    this.audio.src = `/api/music/${track.ePlatform}/stream/${track.id}`;
-    this.audio.play();
+    this.queu.set([track]);
+    this.passedQueu.set([]);
+    this.playNext(true);
+  }
+
+  playPlaylist(track: TrackData[]) {
+    this.queu.set([...track]);
+    this.passedQueu.set([]);
+    this.playNext(true);
+  }
+
+  addPlaylistToQueue(track: TrackData[]) {
+    this.queu.update((pl) => [...pl, ...track]);
+  }
+
+  addPlaylistStartQueue(track: TrackData[]) {
+    this.queu.update((pl) => [...track, ...pl]);
   }
 
   countinue() {
@@ -68,42 +123,41 @@ export class PlayerService {
     this.audio.play();
   }
 
-  stop() {
+  pause() {
     this.audio.pause();
     this.isPlaying.set(false);
   }
 
   skip() {
-    this.queu.update((el) => {
-      if (el.length == 0) {
-        this.curentTrack.set(null);
-        this.isPlaying.set(false);
-        return el;
-      }
-      let nextToPlay = el.shift() as TrackData;
-      this.play(nextToPlay);
-      return el;
-    });
+    this.playNext(this.isPlaying());
   }
 
   addToQuee(track: TrackData) {
+    let startPlaying = false;
     this.queu.update((el) => {
       if (el.length == 0) {
-        this.play(track);
-        return el;
+        startPlaying = true;
       }
       return [...el, track];
     });
+    if (startPlaying && !this.isPlaying()) {
+      this.playNext(true);
+    }
   }
 
   addToStartQuee(track: TrackData) {
+    let startPlaying = false;
     this.queu.update((el) => {
       if (el.length == 0) {
-        this.play(track);
+        startPlaying = true;
         return el;
       }
       return [track, ...el];
     });
+
+    if (startPlaying && !this.isPlaying()) {
+      this.playNext(true);
+    }
   }
   // vol: 0 - 1
   setVolume(vol: number) {

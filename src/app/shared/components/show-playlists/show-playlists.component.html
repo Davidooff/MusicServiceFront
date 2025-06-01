@@ -13,12 +13,11 @@
       *ngIf="el.imgs.length >= 1 && el.imgs.length < 4"
       alt=""
     />
-    @if (el.imgs.length >= 4) {
-    <img class="part-image" [src]="el.imgs[0]" alt="" />
-    <img class="part-image" [src]="el.imgs[1]" alt="" />
-    <img class="part-image" [src]="el.imgs[2]" alt="" />
-    <img class="part-image" [src]="el.imgs[3]" alt="" />
-    }
+    <app-joind-image
+      *ngIf="el.imgs.length >= 4"
+      [images]="el.imgs"
+      [resolution]="200"
+    />
   </div>
   <div>
     <h3>{{ el.name }}</h3>

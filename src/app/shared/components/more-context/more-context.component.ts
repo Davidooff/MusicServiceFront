@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-more-context',
-  standalone: true,
   imports: [PopUpWindowComponent, CommonModule],
   templateUrl: './more-context.component.html',
   styleUrl: './more-context.component.css',

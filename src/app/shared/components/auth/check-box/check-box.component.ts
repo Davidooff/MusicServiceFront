@@ -1,10 +1,20 @@
-import { Component, Input, ViewChild, forwardRef, input, signal } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import {
+  Component,
+  Input,
+  ViewChild,
+  forwardRef,
+  input,
+  signal,
+} from '@angular/core';
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-check-box',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './check-box.component.html',
   styleUrl: './check-box.component.css',
@@ -12,9 +22,9 @@ import { CommonModule } from '@angular/common';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => CheckBoxComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class CheckBoxComponent implements ControlValueAccessor {
   @ViewChild('Checkbox') checkbox!: HTMLInputElement;
@@ -22,7 +32,7 @@ export class CheckBoxComponent implements ControlValueAccessor {
   @Input() label: string = 'Test';
   @Input() id: string = 'checkbox';
   @Input() name: string = 'checkbox';
-  @Input({required: true}) formControlName!: string;
+  @Input({ required: true }) formControlName!: string;
 
   checked = signal(false);
   disabled: boolean = false;
@@ -48,7 +58,7 @@ export class CheckBoxComponent implements ControlValueAccessor {
   }
 
   onCheckboxChange(): void {
-    this.checked.update(prev => !prev);
+    this.checked.update((prev) => !prev);
     this.onChange(this.checked);
     this.onTouched();
   }

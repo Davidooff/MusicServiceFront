@@ -46,14 +46,43 @@ export class MoreContextService {
     ];
   }
 
+  private getUserAlbumMenu(on: UserAlbum): MenuItem[] {
+    return [
+      {
+        img: 'assets/img/skip_next.svg',
+        title: 'Play',
+        func: () => {
+          this.player.playPlaylist(on.track);
+        },
+      },
+      {
+        img: 'assets/img/skip_next.svg',
+        title: 'Add to queu',
+        func: () => {
+          this.player.addPlaylistToQueue(on.track);
+        },
+      },
+      {
+        img: 'assets/img/skip_next.svg',
+        title: 'Add to start of queue',
+        func: () => {
+          this.player.addPlaylistStartQueue(on.track);
+        },
+      },
+    ];
+  }
+
   private isTrackData(obj: any): obj is TrackData {
     return obj && typeof obj === 'object' && 'albumId' in obj;
   }
 
-  private getMenu(on: TrackData | UserAlbum) {
-    console.log(this.isTrackData(on));
+  private isUserAlbum(obj: any): obj is TrackData {
+    return obj && typeof obj === 'object' && 'timesOpened' in obj;
+  }
 
+  private getMenu(on: TrackData | UserAlbum) {
     if (this.isTrackData(on)) return this.getTrackMenu(on as TrackData);
+    if (this.isUserAlbum(on)) return this.getUserAlbumMenu(on as UserAlbum);
     return null;
   }
 

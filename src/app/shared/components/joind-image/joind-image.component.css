@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.img-mixed {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.img-placeholder {
+  background: var(--secondary-background-color);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

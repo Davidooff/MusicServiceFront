@@ -1,0 +1,15 @@
+<div class="img-placeholder" *ngIf="!toDisplay">
+  {{ placeholder }}
+</div>
+<img
+  class="img"
+  *ngIf="!isArr(toDisplay) && toDisplay"
+  [src]="toDisplay.url"
+  alt=""
+/>
+<div class="img-mixed" *ngIf="isArr(toDisplay)">
+  <img [src]="toDisplay[0].url" alt="" />
+  <img [src]="toDisplay[1].url" alt="" />
+  <img [src]="toDisplay[2].url" alt="" />
+  <img [src]="toDisplay[3].url" alt="" />
+</div>

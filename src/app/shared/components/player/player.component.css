@@ -55,3 +55,11 @@
   height: 100%;
   background-color: #ff0000;
 }
+
+.open-queue {
+  transition: 0.5s;
+}
+
+.rotate {
+  transform: rotate(-180deg);
+}

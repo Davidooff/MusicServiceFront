@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+}
+
+.left-side {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+section {
+  width: 100%;
+}
+
+app-joind-image {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.album-control {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10px;
+}
+
+app-circle-btn {
+  width: 40px;
+  height: 40px;
+}
+
+.central-control {
+  width: 60px;
+  margin: 0 10px;
+  height: 60px;
+}

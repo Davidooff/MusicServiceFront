@@ -17,7 +17,7 @@ export class UserAlbumComponent {
   playlists = inject(PlaylistsService);
   userPlaylist = signal<{
     data: UserAlbum;
-    img: TrackImage | TrackImage[] | null;
+    img: TrackImage[][] | null;
   } | null>(null);
   private readonly activatedRoute = inject(ActivatedRoute);
 
@@ -30,15 +30,15 @@ export class UserAlbumComponent {
           if (data.track.length == 0)
             this.userPlaylist.set({ data, img: null });
           else if (data.track.length > 0 && data.track.length < 4)
-            this.userPlaylist.set({ data, img: data.track[0].imgUrls });
+            this.userPlaylist.set({ data, img: [data.track[0].imgUrls] });
           else {
             this.userPlaylist.set({
               data,
               img: [
-                getByResolution(data.track[0].imgUrls, 200),
-                getByResolution(data.track[1].imgUrls, 200),
-                getByResolution(data.track[2].imgUrls, 200),
-                getByResolution(data.track[3].imgUrls, 200),
+                data.track[0].imgUrls,
+                data.track[1].imgUrls,
+                data.track[2].imgUrls,
+                data.track[3].imgUrls,
               ],
             });
           }

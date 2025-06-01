@@ -11,7 +11,6 @@ import { AuthTemplateComponent } from '../../shared/components/auth/auth-templat
 
 @Component({
   selector: 'app-login',
-  standalone: true,
   imports: [
     CommonModule,
     AuthTemplateComponent,

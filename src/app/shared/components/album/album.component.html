@@ -1,1 +1,20 @@
-<div></div>
+<div class="left-side">
+  <app-joind-image [images]="img" [resolution]="1600" />
+  <h2>{{ playlist.name }}</h2>
+  <div class="album-control">
+    <app-circle-btn img="/assets/img/play_arrow.svg" />
+    <app-circle-btn
+      class="central-control"
+      img="/assets/img/play_arrow.svg"
+      [isWhite]="true"
+      (click)="player.playPlaylist(playlist.track)"
+    />
+    <app-circle-btn
+      img="/assets/img/play_arrow.svg"
+      (click)="moreContext.openMenu(playlist, [$event.clientX, $event.clientY])"
+    />
+  </div>
+</div>
+<section>
+  <app-song-item *ngFor="let track of playlist!.track" [data]="track" />
+</section>

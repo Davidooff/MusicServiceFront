@@ -10,7 +10,12 @@
     ></div>
   </div>
   <div class="control">
-    <img src="/assets/img/skip_next.svg" class="prew" alt="" />
+    <img
+      src="/assets/img/skip_next.svg"
+      class="prew"
+      alt=""
+      (click)="playerService.goPre()"
+    />
     <!-- <div class="play state"> -->
     <img
       src="/assets/img/play_arrow.svg"
@@ -21,7 +26,7 @@
     <img
       src="/assets/img/stop.svg"
       *ngIf="playerService.isPlaying()"
-      (click)="playerService.stop()"
+      (click)="playerService.pause()"
       alt=""
     />
     <!-- </div> -->
@@ -42,6 +47,12 @@
   <div class="settings">
     <img src="/assets/img/repeat.svg" alt="" />
     <img src="/assets/img/volume_up.svg" alt="" />
-    <img src="/assets/img/arrow_drop_down.svg" alt="" />
+    <img
+      class="open-queue"
+      [class.rotate]="playerService.isQueueShow()"
+      src="/assets/img/arrow_drop_down.svg"
+      alt=""
+      (click)="playerService.switchQueueShow()"
+    />
   </div>
 </div>

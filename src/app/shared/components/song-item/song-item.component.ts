@@ -5,6 +5,9 @@ import {
   signal,
   effect,
   OnInit,
+  OnDestroy,
+  OnChanges,
+  Output,
 } from '@angular/core';
 import { TrackData } from '../../../core/models/TrackData';
 import { IdNameGroup } from '../../../core/models/IdNameGroup';
@@ -15,7 +18,6 @@ import { PlaylistsService } from '../../../core/services/playlists.service';
 import { MoreContextService } from '../../../core/services/more-context.service';
 import { LoadImageService } from '../../../core/services/load-image.service';
 import { TrackImage } from '../../../core/models/TrackImage';
-import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-song-item',
@@ -23,25 +25,35 @@ import { tap } from 'rxjs';
   templateUrl: './song-item.component.html',
   styleUrl: './song-item.component.css',
 })
-export class SongItemComponent implements OnInit {
+export class SongItemComponent implements OnChanges, OnDestroy {
   @Input({ required: true }) data!: TrackData;
-  @Input() userAlbumId: string | null = null;
+  @Input() preventDefault = false;
   playerService = inject(PlayerService);
   moreContextService = inject(MoreContextService);
   loadImageService = inject(LoadImageService);
+  subscription: any;
+
   img = signal<string | null>(null);
-  ngOnInit() {
+  ngOnChanges() {
     const nextImg = this.getImg(this.data.imgUrls);
     if (nextImg && nextImg.url) {
-      this.loadImageService.addToLoad(nextImg.url).subscribe({
-        next: (loadedUrl) => {
-          this.img.set(loadedUrl);
-        },
-        error: () => {
-          // Handle image load error, maybe set a default image
-          console.error(`Failed to load image: ${nextImg.url}`);
-        },
-      });
+      this.subscription = this.loadImageService
+        .addToLoad(nextImg.url)
+        .subscribe({
+          next: (loadedUrl) => {
+            this.img.set(loadedUrl);
+          },
+          error: () => {
+            // Handle image load error, maybe set a default image
+            console.error(`Failed to load image: ${nextImg.url}`);
+          },
+        });
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
 

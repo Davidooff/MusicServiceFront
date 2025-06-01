@@ -1,6 +1,5 @@
 <app-album
   *ngIf="userPlaylist()"
   [img]="userPlaylist()!.img"
-  [trackData]="userPlaylist()!.data!.track"
-  [title]="userPlaylist()!.data!.name"
+  [playlist]="userPlaylist()!.data"
 />

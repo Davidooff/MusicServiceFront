@@ -1,0 +1,20 @@
+<div
+  class="wrapper"
+  [style]="{
+    background: isWhite ? 'var(--white-text-color)' : 'var(--border-color)'
+  }"
+>
+  <div
+    class="btn"
+    [style]="'mask: url(' + img + ') center no-repeat'"
+    [ngStyle]="
+      isWhite
+        ? {
+          background: 'var(--secondary-background-color)',
+        }
+        : {
+          background: 'var(--white-text-color)',
+          }
+    "
+  ></div>
+</div>

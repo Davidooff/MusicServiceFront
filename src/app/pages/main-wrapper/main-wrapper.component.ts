@@ -6,6 +6,7 @@ import { PlayerComponent } from '../../shared/components/player/player.component
 import { CreatePlaylistPopUpComponent } from '../../shared/components/create-playlist-pop-up/create-playlist-pop-up.component';
 import { MoreContextComponent } from '../../shared/components/more-context/more-context.component';
 import { AddToPlaylistWindowComponent } from '../../shared/components/add-to-playlist-window/add-to-playlist-window.component';
+import { QueueComponent } from '../../shared/components/queue/queue.component';
 
 @Component({
   selector: 'app-main-wrapper',
@@ -17,6 +18,7 @@ import { AddToPlaylistWindowComponent } from '../../shared/components/add-to-pla
     CreatePlaylistPopUpComponent,
     MoreContextComponent,
     AddToPlaylistWindowComponent,
+    QueueComponent,
   ],
   templateUrl: './main-wrapper.component.html',
   styleUrl: './main-wrapper.component.css',

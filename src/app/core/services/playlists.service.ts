@@ -52,6 +52,7 @@ export class PlaylistsService {
       .post('/api/playlists/add-track', {
         eplatform: track.ePlatform,
         playlistId,
+        albumId: track.albumId,
         TrackId: track.id,
       })
       .subscribe({
