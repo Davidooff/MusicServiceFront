@@ -62,7 +62,10 @@ export class PlayerService {
 
   private setAudio(id: string, ePlatform: EPlatforms, startPlay: boolean) {
     this.audio.src = `/api/music/${ePlatform}/stream/${id}`;
-    startPlay && this.audio.play();
+    if (startPlay) {
+      this.audio.play();
+      this.isPlaying.set(true);
+    }
   }
 
   playNext(start: boolean) {
@@ -130,6 +133,39 @@ export class PlayerService {
 
   skip() {
     this.playNext(this.isPlaying());
+  }
+
+  skipTo(index: number, queue: 'passed' | 'next') {
+    let passed = this.passedQueu();
+    let next = this.queu();
+
+    if (queue == 'passed') {
+      next = [...passed.slice(index), ...next];
+      passed = passed.slice(0, index);
+    } else {
+      passed = [...passed, ...next.slice(0, index)];
+      next = next.slice(index);
+    }
+
+    const lastTrack = passed[passed.length - 1];
+    this.passedQueu.set(passed);
+    this.queu.set(next);
+    this.curentTrack.set(lastTrack);
+    this.setAudio(lastTrack.id, lastTrack.ePlatform, true);
+  }
+
+  private changeInQueue(queue: TrackData[], fromTo: [number, number]) {
+    const [from, to] = fromTo;
+    const result = [...queue];
+    const [removed] = result.splice(from, 1);
+    result.splice(to > from ? to - 1 : to, 0, removed);
+    return result;
+  }
+
+  moveInQueu(fromTo: [number, number], queue: 'passed' | 'next') {
+    (queue == 'next' ? this.queu : this.passedQueu).update((el) =>
+      this.changeInQueue(el, fromTo)
+    );
   }
 
   addToQuee(track: TrackData) {

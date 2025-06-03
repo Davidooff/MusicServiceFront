@@ -1,0 +1,22 @@
+:host {
+  width: 100%;
+  height: 2px;
+  background-color: var(--border-color);
+}
+
+.progress-state {
+  background: red;
+  position: relative;
+}
+
+.pointer {
+  position: absolute;
+  right: 0;
+  background: red;
+  border-radius: 25%;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+}

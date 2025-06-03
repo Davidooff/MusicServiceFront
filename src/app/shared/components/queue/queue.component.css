@@ -30,18 +30,3 @@ app-joind-image {
   width: 100%;
   color: white;
 }
-
-h3 {
-  margin-bottom: 20px;
-  margin-left: 5px;
-  font-weight: 400;
-  font-size: 18px;
-}
-
-.queu h3 {
-  margin-top: 10px;
-}
-
-app-song-item {
-  border-bottom: 1px solid var(--border-color);
-}

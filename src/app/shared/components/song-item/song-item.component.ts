@@ -28,6 +28,7 @@ import { TrackImage } from '../../../core/models/TrackImage';
 export class SongItemComponent implements OnChanges, OnDestroy {
   @Input({ required: true }) data!: TrackData;
   @Input() preventDefault = false;
+
   playerService = inject(PlayerService);
   moreContextService = inject(MoreContextService);
   loadImageService = inject(LoadImageService);
@@ -60,6 +61,7 @@ export class SongItemComponent implements OnChanges, OnDestroy {
   playlistsService = inject(PlaylistsService);
 
   onClick() {
+    if (this.preventDefault) return;
     this.playerService.play(this.data);
   }
 

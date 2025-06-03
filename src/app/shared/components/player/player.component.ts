@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { PlayerService } from '../../../core/services/player.service';
 import { CommonModule } from '@angular/common';
 import { SongItemComponent } from '../song-item/song-item.component';
+import { SlidingInputComponent } from '../sliding-input/sliding-input.component';
 
 @Component({
   selector: 'app-player',
-  imports: [CommonModule, SongItemComponent],
+  imports: [CommonModule, SongItemComponent, SlidingInputComponent],
   templateUrl: './player.component.html',
   styleUrl: './player.component.css',
 })

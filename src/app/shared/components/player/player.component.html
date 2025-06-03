@@ -1,4 +1,9 @@
 <div class="player" *ngIf="playerService.curentTrack()">
+  <app-sliding-input
+    [progress]="
+      playerService.curentTime() / playerService.curentTrack()!.duration
+    "
+  />
   <div class="time-line">
     <div
       class="curent-time"

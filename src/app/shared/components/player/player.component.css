@@ -5,6 +5,12 @@
   width: 100%;
 }
 
+app-sliding-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .player {
   color: white;
   position: relative;

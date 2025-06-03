@@ -16,13 +16,15 @@
     />
   </div>
   <div class="right-side">
-    <div class="passedQueu">
-      <h3>Passed queue</h3>
-      <app-song-item *ngFor="let track of player.passedQueu()" [data]="track" />
-    </div>
-    <div class="queu">
-      <h3>Play next</h3>
-      <app-song-item *ngFor="let track of player.queu()" [data]="track" />
-    </div>
+    <app-dragble-list
+      [list]="player.passedQueu()"
+      (skipTo)="player.skipTo($event, 'passed')"
+      (move)="player.moveInQueu($event, 'passed')"
+    />
+    <app-dragble-list
+      [list]="player.queu()"
+      (skipTo)="player.skipTo($event, 'next')"
+      (move)="player.moveInQueu($event, 'next')"
+    />
   </div>
 </div>

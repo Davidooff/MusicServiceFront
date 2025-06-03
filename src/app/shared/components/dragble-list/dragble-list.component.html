@@ -1,0 +1,25 @@
+<div #DragListWrapper style="position: relative">
+  <app-song-item
+    *ngFor="let track of list; index as i"
+    [ngStyle]="
+      dragDisplayPossition()?.index == i
+        ? {
+            position: 'absolute',
+            top: dragDisplayPossition()!.result.y + 'px',
+            left: dragDisplayPossition()!.result.x + 'px',
+            zIndex: 2
+          }
+        : {}
+    "
+    [class.pointingTop]="
+      pointingOnIndex()[0] == i && pointingOnIndex()[1] == 'top'
+    "
+    [class.pointingBottom]="
+      pointingOnIndex()[0] == i && pointingOnIndex()[1] == 'btm'
+    "
+    [data]="track"
+    [preventDefault]="true"
+    (mousedown)="onDragStart($event, i)"
+    (mouseup)="onDragEnd($event)"
+  />
+</div>
